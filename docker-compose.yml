@@ -1,0 +1,25 @@
+version: "3.1"
+
+services:
+  cleanarea-db:
+    image: postgres:14.0-alpine
+    container_name: cleanarea-postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=pguser
+      - POSTGRES_DB=cleanarea
+    volumes:
+      - ./.data/pg:/var/lib/postgresql
+    ports:
+      - 5432:5432
+  cleanarea-test-db:
+    image: postgres:14.0-alpine
+    container_name: cleanarea-test-postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=pguser
+      - POSTGRES_DB=cleanarea_test
+    ports:
+      - 5433:5432
