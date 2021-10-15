@@ -20,6 +20,8 @@ export default resolver.pipe(
       return await prisma.article.findUnique({ where: { id } })
     })
 
+    if (!article) throw new NotFoundError("article not found")
+
     return article
   }
 )
