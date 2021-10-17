@@ -1,11 +1,7 @@
 import { NotFoundError, resolver } from "blitz"
 import db from "db"
 import { z } from "zod"
-
-const UpdateArticle = z.object({
-  id: z.number(),
-  content: z.string(),
-})
+import { UpdateArticle } from "../validations"
 
 export default resolver.pipe(
   resolver.zod(UpdateArticle),

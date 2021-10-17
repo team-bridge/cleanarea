@@ -4,6 +4,7 @@ import Layout from "app/core/layouts/Layout"
 import getArticle from "app/articles/queries/getArticle"
 import updateArticle from "app/articles/mutations/updateArticle"
 import { ArticleForm, FORM_ERROR } from "app/articles/components/ArticleForm"
+import { UpdateArticle } from "app/articles/validations"
 
 export const EditArticle = () => {
   const router = useRouter()
@@ -30,15 +31,11 @@ export const EditArticle = () => {
 
         <ArticleForm
           submitText="Update Article"
-          // TODO use a zod schema for form validation
-          //  - Tip: extract mutation's schema into a shared `validations.ts` file and
-          //         then import and use it here
-          // schema={UpdateArticle}
+          schema={UpdateArticle}
           initialValues={article}
           onSubmit={async (values) => {
             try {
               const updated = await updateArticleMutation({
-                id: article.id,
                 ...values,
               })
               await setQueryData(updated)
