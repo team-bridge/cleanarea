@@ -2,8 +2,9 @@ import blitz from "blitz/custom-server"
 import { createServer } from "http"
 import { parse } from "url"
 import { log } from "@blitzjs/display"
+import { getConstant } from "config"
 
-const { PORT = "3000" } = process.env
+const { PORT } = getConstant()
 const dev = process.env.NODE_ENV !== "production"
 const app = blitz({ dev })
 const handle = app.getRequestHandler()
@@ -16,6 +17,6 @@ app.prepare().then(() => {
 
     handle(req, res, parsedUrl)
   }).listen(PORT, () => {
-    log.success(`Ready on http://localhost:${PORT}`)
+    log.success(`Ready on ${PORT}`)
   })
 })
