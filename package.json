@@ -32,8 +32,8 @@
     "@prisma/client": "3.2.1",
     "blitz": "0.41.1",
     "final-form": "4.20.4",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "alpha",
+    "react-dom": "alpha",
     "react-final-form": "6.5.7",
     "zod": "3.9.8"
   },
