@@ -11,7 +11,9 @@
     "test:watch": "jest --watch",
     "prepare": "husky install",
     "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "pre-run:prod": "yarn --frozen-lockfile --prod=false && blitz prisma generate && blitz build && blitz prisma migrate deploy",
+    "pre-run:dev": "yarn install && blitz prisma generate && blitz prisma migrate dev"
   },
   "prisma": {
     "schema": "db/schema.prisma"
@@ -27,13 +29,13 @@
   },
   "dependencies": {
     "@material-ui/core": "4.12.3",
-    "@prisma/client": "3.1.1",
-    "blitz": "0.40.0",
+    "@prisma/client": "3.2.1",
+    "blitz": "0.41.1",
     "final-form": "4.20.4",
-    "react": "alpha",
-    "react-dom": "alpha",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-final-form": "6.5.7",
-    "zod": "3.9.5"
+    "zod": "3.9.8"
   },
   "devDependencies": {
     "@types/preview-email": "2.0.1",
@@ -46,7 +48,7 @@
     "pretty-quick": "3.1.1",
     "preview-email": "3.0.5",
     "prisma": "3.2.1",
-    "typescript": "~4.3"
+    "typescript": "4.4.4"
   },
   "private": true
 }
