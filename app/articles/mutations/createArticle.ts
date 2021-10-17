@@ -1,10 +1,6 @@
 import { resolver } from "blitz"
 import db from "db"
-import { z } from "zod"
-
-const CreateArticle = z.object({
-  content: z.string(),
-})
+import { CreateArticle } from "../validations"
 
 export default resolver.pipe(
   resolver.zod(CreateArticle),

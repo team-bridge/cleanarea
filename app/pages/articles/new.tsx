@@ -2,6 +2,7 @@ import { Link, useRouter, useMutation, BlitzPage, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import createArticle from "app/articles/mutations/createArticle"
 import { ArticleForm, FORM_ERROR } from "app/articles/components/ArticleForm"
+import { CreateArticle } from "app/articles/validations"
 
 const NewArticlePage: BlitzPage = () => {
   const router = useRouter()
@@ -18,6 +19,7 @@ const NewArticlePage: BlitzPage = () => {
         //         then import and use it here
         // schema={CreateArticle}
         // initialValues={{}}
+        schema={CreateArticle}
         onSubmit={async (values) => {
           try {
             const article = await createArticleMutation(values)
