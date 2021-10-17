@@ -10,6 +10,7 @@ export default resolver.pipe(
       data: {
         content: input.content,
         userId: ctx.session.userId,
+        deletedAt: null,
       },
     })
 

@@ -1,4 +1,4 @@
-import { NotFoundError, resolver } from "blitz"
+import { AuthorizationError, NotFoundError, resolver } from "blitz"
 import db from "db"
 import { z } from "zod"
 import { UpdateArticle } from "../validations"
@@ -6,17 +6,19 @@ import { UpdateArticle } from "../validations"
 export default resolver.pipe(
   resolver.zod(UpdateArticle),
   resolver.authorize(),
-  async ({ id, ...data }) => {
+  async ({ id, ...data }, ctx) => {
     const article = await db.$transaction(async (prisma) => {
-      const updateRes = await prisma.article.updateMany({ where: { id, deletedAt: null }, data })
-      if (updateRes.count < 1) {
-        throw new NotFoundError("article not found")
+      const article = await prisma.article.findFirst({ where: { id, deletedAt: null } })
+
+      if (!article) throw new NotFoundError("article not found")
+      if (article.userId !== ctx.session.userId) {
+        throw new AuthorizationError("unauthorized user")
       }
 
-      return await prisma.article.findUnique({ where: { id } })
-    })
+      const updatedArticle = await prisma.article.update({ where: { id }, data })
 
-    if (!article) throw new NotFoundError("article not found")
+      return updatedArticle
+    })
 
     return article
   }
