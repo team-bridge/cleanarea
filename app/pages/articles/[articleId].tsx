@@ -57,7 +57,7 @@ const ShowArticlePage: BlitzPage = () => {
   )
 }
 
-ShowArticlePage.authenticate = true
+ShowArticlePage.authenticate = false
 ShowArticlePage.getLayout = (page) => <Layout>{page}</Layout>
 
 export default ShowArticlePage
