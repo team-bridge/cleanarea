@@ -13,7 +13,7 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "pre-run:prod": "yarn --frozen-lockfile --prod=false && blitz prisma generate && blitz build && blitz prisma migrate deploy",
-    "pre-run:dev": "yarn install && blitz prisma generate && blitz prisma migrate dev"
+    "pre-run:dev": "yarn install && blitz prisma generate && blitz prisma db push"
   },
   "prisma": {
     "schema": "db/schema.prisma"
@@ -28,27 +28,34 @@
     ]
   },
   "dependencies": {
-    "@material-ui/core": "4.12.3",
-    "@prisma/client": "3.2.1",
-    "blitz": "0.41.1",
-    "final-form": "4.20.4",
+    "@material-ui/core": "^4.12.3",
+    "@prisma/client": "^3.3.0",
+    "blitz": "^0.41.1",
+    "final-form": "^4.20.4",
     "react": "alpha",
     "react-dom": "alpha",
-    "react-final-form": "6.5.7",
-    "zod": "3.9.8"
+    "react-final-form": "^6.5.7",
+    "zod": "^3.10.3"
   },
   "devDependencies": {
-    "@types/preview-email": "2.0.1",
-    "@types/react": "17.0.26",
-    "eslint": "7.32.0",
-    "husky": "6.0.0",
-    "lint-staged": "10.5.4",
-    "prettier": "2.4.1",
-    "prettier-plugin-prisma": "0.15.0",
-    "pretty-quick": "3.1.1",
-    "preview-email": "3.0.5",
-    "prisma": "3.2.1",
-    "typescript": "4.4.4"
+    "@types/preview-email": "^2.0.1",
+    "@types/react": "^17.0.30",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.3",
+    "prettier": "^2.4.1",
+    "prettier-plugin-prisma": "^3.3.0",
+    "pretty-quick": "^3.1.1",
+    "preview-email": "^3.0.5",
+    "prisma": "^3.3.0",
+    "typescript": "^4.4.4"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "react-test-renderer": "alpha",
+    "babel-plugin-superjson-next": "^0.4.2",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "@babel/core": "^7.15.8"
+  }
 }

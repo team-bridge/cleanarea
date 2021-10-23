@@ -22,10 +22,12 @@ model User {
   email          String    @unique
   hashedPassword String?   @map("has_password")
   role           String    @default("USER")
+  riotAccountId  Int?      @map("riot_account_id")
 
-  tokens   Token[]
-  sessions Session[]
-  Article  Article[]
+  tokens      Token[]
+  sessions    Session[]
+  Article     Article[]
+  riotAccount RiotAccount? @relation(fields: [riotAccountId], references: [id])
 
   @@map("user")
 }
@@ -67,6 +69,7 @@ model Token {
 // NOTE: It's highly recommended to use an enum for the token type
 //       but enums only work in Postgres.
 //       See: https://blitzjs.com/docs/database-overview#switch-to-postgresql
+
 enum TokenType {
   RESET_PASSWORD
 }
@@ -83,4 +86,16 @@ model Article {
   userId Int  @map("user_id")
 
   @@map("article")
+}
+
+model RiotAccount {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  puuid     String
+  gameName  String   @map("game_name")
+  tagLine   String   @map("tag_line")
+
+  User User[]
+  @@map("riot_account")
 }
