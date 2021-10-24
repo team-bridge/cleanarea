@@ -6,6 +6,7 @@ import {
   AuthorizationError,
   ErrorFallbackProps,
   useQueryErrorResetBoundary,
+  useRouter,
 } from "blitz"
 import LoginForm from "app/auth/components/LoginForm"
 
@@ -23,19 +24,22 @@ const theme = createTheme({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   const getLayout = Component.getLayout || ((page) => page)
+  const onReset = useQueryErrorResetBoundary()
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <ErrorBoundary
-        FallbackComponent={RootErrorFallback}
-        onReset={useQueryErrorResetBoundary().reset}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </ErrorBoundary>
-    </ThemeProvider>
-  )
+  if (router.pathname.indexOf("/admin") !== 0) {
+    return <></> // admin page
+  } else {
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <ErrorBoundary FallbackComponent={RootErrorFallback} onReset={onReset.reset}>
+          {getLayout(<Component {...pageProps} />)}
+        </ErrorBoundary>
+      </ThemeProvider>
+    )
+  }
 }
 
 function RootErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
