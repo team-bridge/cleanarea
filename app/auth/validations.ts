@@ -5,6 +5,7 @@ const password = z.string().min(10).max(100)
 export const Signup = z.object({
   email: z.string().email(),
   password,
+  battleTag: z.string().regex(/^[^\#]+#\d+$/g, "유효하지 않은 배틀패스 입니다."),
 })
 
 export const Login = z.object({
