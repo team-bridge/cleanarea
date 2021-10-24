@@ -13,6 +13,8 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { createTheme, ThemeProvider } from "@material-ui/core/styles"
 import React from "react"
 
+import "app/core/styles/index.css";
+
 //You can customize this as you want and even move it out to a separate file
 const theme = createTheme({
   palette: {
