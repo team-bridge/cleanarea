@@ -14,20 +14,22 @@ generator client {
 // --------------------------------------
 
 model User {
-  id             Int       @id @default(autoincrement())
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
-  deletedAt      DateTime? @map("deleted_at")
-  name           String?
-  email          String    @unique
-  hashedPassword String?   @map("has_password")
-  role           String    @default("USER")
-  riotAccountId  Int?      @map("riot_account_id")
+  id                         Int       @id @default(autoincrement())
+  createdAt                  DateTime  @default(now()) @map("created_at")
+  updatedAt                  DateTime  @updatedAt @map("updated_at")
+  deletedAt                  DateTime? @map("deleted_at")
+  name                       String?
+  email                      String    @unique
+  hashedPassword             String?   @map("has_password")
+  role                       String    @default("USER")
+  riotAccountId              Int?      @map("riot_account_id")
+  blizzardBattlenetAccountId Int?      @map("blizzard_battlenet_account_id")
 
-  tokens      Token[]
-  sessions    Session[]
-  Article     Article[]
-  riotAccount RiotAccount? @relation(fields: [riotAccountId], references: [id])
+  tokens                   Token[]
+  sessions                 Session[]
+  Article                  Article[]
+  riotAccount              RiotAccount?              @relation(fields: [riotAccountId], references: [id])
+  blizzardBattlenetAccount BlizzardBattlenetAccount? @relation(fields: [blizzardBattlenetAccountId], references: [id])
 
   @@map("user")
 }
@@ -98,4 +100,14 @@ model RiotAccount {
 
   User User[]
   @@map("riot_account")
+}
+
+model BlizzardBattlenetAccount {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  battleTag String   @map("battle_tag")
+
+  User User[]
+  @@map("blizzard_battlenet_account")
 }
