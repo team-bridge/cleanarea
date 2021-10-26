@@ -8,8 +8,6 @@ export interface FormProps<S extends z.ZodType<any, any>>
   extends Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> {
   /** All your form fields */
   children?: ReactNode
-  /** Text to display in the submit button */
-  submitText?: string
   schema?: S
   onSubmit: FinalFormProps<z.infer<S>>["onSubmit"]
   initialValues?: FinalFormProps<z.infer<S>>["initialValues"]
@@ -17,7 +15,6 @@ export interface FormProps<S extends z.ZodType<any, any>>
 
 export function Form<S extends z.ZodType<any, any>>({
   children,
-  submitText,
   schema,
   initialValues,
   onSubmit,
@@ -28,9 +25,8 @@ export function Form<S extends z.ZodType<any, any>>({
       initialValues={initialValues}
       validate={validateZodSchema(schema)}
       onSubmit={onSubmit}
-      render={({ handleSubmit, submitting, submitError }) => (
+      render={({ handleSubmit, submitError }) => (
         <form onSubmit={handleSubmit} className="form" {...props}>
-          {/* Form fields supplied as children are rendered here */}
           {children}
 
           {submitError && (
@@ -38,18 +34,6 @@ export function Form<S extends z.ZodType<any, any>>({
               {submitError}
             </div>
           )}
-
-          {submitText && (
-            <button type="submit" disabled={submitting}>
-              {submitText}
-            </button>
-          )}
-
-          <style global jsx>{`
-            .form > * + * {
-              margin-top: 1rem;
-            }
-          `}</style>
         </form>
       )}
     />
