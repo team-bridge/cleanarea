@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import Container from "@mui/material/Container"
 import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
@@ -52,7 +53,7 @@ const UserInfo = () => {
 
 const Home: BlitzPage = () => {
   return (
-    <div className="container">
+    <Container>
       <main>
         <div className="logo">
           <Image src={logo} alt="blitzjs" />
@@ -262,7 +263,7 @@ const Home: BlitzPage = () => {
           }
         }
       `}</style>
-    </div>
+    </Container>
   )
 }
 

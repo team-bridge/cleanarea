@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import { Head } from "blitz"
+import Container from "@mui/material/Container"
 
 type LayoutProps = {
   title?: string
@@ -17,7 +18,9 @@ const Layout = ({ title, children }: LayoutProps) => {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      {children}
+      <Container maxWidth="md" fixed>
+        {children}
+      </Container>
     </>
   )
 }
