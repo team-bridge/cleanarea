@@ -28,11 +28,15 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "11.5.0",
+    "@emotion/styled": "11.3.0",
     "@material-ui/core": "^4.12.3",
+    "@mui/material": "5.0.4",
     "@prisma/client": "^3.3.0",
     "autoprefixer": "10",
     "blitz": "^0.41.1",
     "final-form": "^4.20.4",
+    "material-ui": "0.20.2",
     "postcss": "8",
     "react": "alpha",
     "react-dom": "alpha",
