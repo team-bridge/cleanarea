@@ -31,10 +31,10 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
 
     return (
       <div {...outerProps}>
-        <label {...labelProps}>
+        <label {...labelProps} htmlFor={name}>
           {label}
-          <input {...input} disabled={submitting} {...props} ref={ref} />
         </label>
+        <input {...input} disabled={submitting} {...props} name={name} ref={ref} />
 
         {touched && normalizedError && (
           <div role="alert" style={{ color: "red" }}>
