@@ -22,7 +22,6 @@ const ForgotPasswordPage: BlitzPage = () => {
         </div>
       ) : (
         <Form
-          submitText="Send Reset Password Instructions"
           schema={ForgotPassword}
           initialValues={{ email: "" }}
           onSubmit={async (values) => {

@@ -30,7 +30,6 @@ export const EditArticle = () => {
         <pre>{JSON.stringify(article, null, 2)}</pre>
 
         <ArticleForm
-          submitText="Update Article"
           schema={UpdateArticle}
           initialValues={article}
           onSubmit={async (values) => {

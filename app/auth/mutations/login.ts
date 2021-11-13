@@ -2,12 +2,16 @@ import { resolver, SecurePassword, AuthenticationError } from "blitz"
 import db from "db"
 import { Login } from "../validations"
 import { Role } from "types"
+import { getErrorMessageByKey } from "app/lib/error/"
 
 export const authenticateUser = async (rawEmail: string, rawPassword: string) => {
   const email = rawEmail.toLowerCase().trim()
   const password = rawPassword.trim()
-  const user = await db.user.findFirst({ where: { email, deletedAt: null } })
-  if (!user) throw new AuthenticationError()
+  const user = await db.user.findFirst({
+    where: { email, deletedAt: null },
+    include: { blizzardBattlenetAccount: true },
+  })
+  if (!user) throw new AuthenticationError(getErrorMessageByKey("loginFailed"))
 
   const result = await SecurePassword.verify(user.hashedPassword, password)
 
@@ -25,7 +29,11 @@ export default resolver.pipe(resolver.zod(Login), async ({ email, password }, ct
   // This throws an error if credentials are invalid
   const user = await authenticateUser(email, password)
 
-  await ctx.session.$create({ userId: user.id, role: user.role as Role })
+  await ctx.session.$create({
+    userId: user.id,
+    role: user.role as Role,
+    battleTagId: user.blizzardBattlenetAccountId,
+  })
 
   return user
 })

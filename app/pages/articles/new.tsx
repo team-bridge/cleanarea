@@ -13,7 +13,6 @@ const NewArticlePage: BlitzPage = () => {
       <h1>Create New Article</h1>
 
       <ArticleForm
-        submitText="Create Article"
         schema={CreateArticle}
         onSubmit={async (values) => {
           try {
