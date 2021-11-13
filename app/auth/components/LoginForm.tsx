@@ -27,7 +27,6 @@ export const LoginForm = (props: LoginFormProps) => {
         }}
       >
         <Form
-          submit={"로그인"}
           schema={Login}
           initialValues={{ email: "", password: "" }}
           onSubmit={async (values) => {
