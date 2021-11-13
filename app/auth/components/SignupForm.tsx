@@ -8,8 +8,6 @@ import { Box, Button, Divider, Grid } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { FormInnerMarginStyle, FormInnerPaddingStyle, FormInnerStyle, InputStyle } from "./styles"
 
-import { Button } from "@mui/material"
-
 type SignupFormProps = {
   onSuccess?: () => void
 }
