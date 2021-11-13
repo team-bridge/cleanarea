@@ -103,10 +103,11 @@ model RiotAccount {
 }
 
 model BlizzardBattlenetAccount {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  battleTag String   @map("battle_tag")
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  battleTag   String   @map("battle_tag")
+  battlenetId BigInt   @unique @map("battlenet_id")
 
   User User[]
   @@map("blizzard_battlenet_account")
