@@ -31,9 +31,10 @@ export const LoginForm = (props: LoginFormProps) => {
           mt: 2,
           mb: 2,
           padding: 2,
-          border: `1px solid ${blue[500]}`,
+          border: `1px solid ${blue[500]}33`,
           borderRadius: 2,
           fontSize: 10,
+          backgroundColor: `${blue[100]}33`,
         }}
       >
         <Form
