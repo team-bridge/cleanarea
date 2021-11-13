@@ -1,6 +1,7 @@
 export const InputStyle = {
   width: "100%",
   border: "1px solid #1565c0",
+  borderRadius: 2,
   fontSize: "12px",
 }
 export const FormInnerMarginStyle = {
