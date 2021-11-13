@@ -1,13 +1,14 @@
-import { AuthenticationError, Link, useMutation, Routes } from "blitz"
+import { AuthenticationError, Link, useMutation, Routes, Image } from "blitz"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
-import { blue } from "@mui/material/colors"
+import { blue, grey } from "@mui/material/colors"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import login from "app/auth/mutations/login"
 import { Login } from "app/auth/validations"
 import { FormInnerMarginStyle, FormInnerPaddingStyle, FormInnerStyle, InputStyle } from "./styles"
 import { useState } from "react"
+import battlenetSvg from "public/battlenet.svg"
 
 import { default as MuiLink } from "@mui/material/Link"
 import { Divider } from "@mui/material"
@@ -27,14 +28,14 @@ export const LoginForm = (props: LoginFormProps) => {
     <>
       <Box
         sx={{
-          width: 250,
+          width: 350,
           mt: 2,
           mb: 2,
-          padding: 2,
+          padding: 5,
           border: `1px solid ${blue[500]}33`,
-          borderRadius: 2,
-          fontSize: 10,
-          backgroundColor: `${blue[100]}33`,
+          borderRadius: 3,
+          fontSize: 16,
+          backgroundColor: `${grey[100]}`,
         }}
       >
         <Form
@@ -94,9 +95,9 @@ export const LoginForm = (props: LoginFormProps) => {
                   style={{ ...InputStyle, ...FormInnerMarginStyle, ...FormInnerPaddingStyle }}
                 />
                 <a>
-                  비밀번호를 잊어버리셨습니까? &nbsp;
+                  비밀번호를 잊어버리셨습니까?&nbsp;
                   <Link href={Routes.ForgotPasswordPage()}>
-                    <MuiLink>비밀번호 찾기</MuiLink>
+                    <MuiLink>찾기</MuiLink>
                   </Link>
                 </a>
               </>
@@ -104,7 +105,7 @@ export const LoginForm = (props: LoginFormProps) => {
             {phase === PHASE_REQUIRE_EMAIL ? (
               <Button
                 type="button"
-                size="small"
+                size="large"
                 variant="contained"
                 onClick={() => {
                   setPhase(PHASE_REQUIRE_PASSWORD)
@@ -114,13 +115,31 @@ export const LoginForm = (props: LoginFormProps) => {
                 계속
               </Button>
             ) : (
-              <Button type="submit" size="small" variant="contained" style={FormInnerStyle}>
+              <Button type="submit" size="large" variant="contained" style={FormInnerStyle}>
                 로그인
               </Button>
             )}
             <Divider>또는</Divider>
-            <Button type="button" size="small" variant="contained" style={FormInnerStyle}>
-              <Link href="#">블리자드로 로그인</Link>
+            <Button type="button" size="large" variant="contained" style={FormInnerStyle}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignContent: "space-around",
+                  flexDirection: "row",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 25,
+                    height: 25,
+                    mr: 1,
+                  }}
+                >
+                  <Image src={battlenetSvg} alt="battlenet" />
+                </Box>
+                <Link href="#">블리자드로 회원가입</Link>
+              </Box>
             </Button>
           </Box>
         </Form>

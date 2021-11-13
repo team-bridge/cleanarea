@@ -1,12 +1,13 @@
-import { Link, useMutation } from "blitz"
+import { Image, Link, useMutation } from "blitz"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
 import { Signup } from "app/auth/validations"
 import { useState } from "react"
 import { Box, Button, Divider, Grid } from "@mui/material"
-import { blue } from "@mui/material/colors"
+import { blue, grey } from "@mui/material/colors"
 import { FormInnerMarginStyle, FormInnerPaddingStyle, FormInnerStyle, InputStyle } from "./styles"
+import battlenetSvg from "public/battlenet.svg"
 
 type SignupFormProps = {
   onSuccess?: () => void
@@ -28,14 +29,14 @@ export const SignupForm = (props: SignupFormProps) => {
     >
       <Box
         sx={{
-          width: 250,
+          width: 350,
           mt: 2,
           mb: 2,
-          padding: 2,
+          padding: 5,
           border: `1px solid ${blue[500]}33`,
-          borderRadius: 2,
-          fontSize: 10,
-          backgroundColor: `${blue[100]}33`,
+          borderRadius: 3,
+          fontSize: 16,
+          backgroundColor: `${grey[100]}`,
 
           justifyContent: "center",
         }}
@@ -74,7 +75,7 @@ export const SignupForm = (props: SignupFormProps) => {
             label="비밀번호"
             style={{ ...InputStyle, ...FormInnerMarginStyle, ...FormInnerPaddingStyle }}
           />
-          <Button type="submit" size="small" variant="contained" style={FormInnerStyle}>
+          <Button type="submit" size="large" variant="contained" style={FormInnerStyle}>
             회원가입
           </Button>
         </Form>
@@ -82,17 +83,36 @@ export const SignupForm = (props: SignupFormProps) => {
       <Divider orientation="vertical" variant="middle" flexItem sx={{ m: 2 }}></Divider>
       <Box
         sx={{
-          width: 250,
+          width: 350,
           mt: 2,
           mb: 2,
-          fontSize: 10,
+
+          fontSize: 16,
 
           flexDirection: "column",
           justifyContent: "center",
         }}
       >
-        <Button type="button" size="small" variant="contained" style={FormInnerStyle}>
-          <Link href="#">블리자드로 회원가입</Link>
+        <Button type="button" size="large" variant="contained" style={FormInnerStyle}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignContent: "space-around",
+              flexDirection: "row",
+            }}
+          >
+            <Box
+              sx={{
+                width: 25,
+                height: 25,
+                mr: 1,
+              }}
+            >
+              <Image src={battlenetSvg} alt="battlenet" />
+            </Box>
+            <Link href="#">블리자드로 회원가입</Link>
+          </Box>
         </Button>
       </Box>
     </Grid>
