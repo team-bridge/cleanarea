@@ -9,6 +9,10 @@ const environmentConfig = z
       .regex(/^\d+$/)
       .default("3000")
       .transform((x) => Number(x)),
+
+    BLIZAARD_CLIENT_SECRET: z.string(),
+    BLITZ_PUBLIC_BLIZAARD_CLIENT_ID: z.string(),
+    APP_BASE_URL: z.string().url(),
   })
   .parse(process.env)
 

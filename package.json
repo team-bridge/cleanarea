@@ -34,10 +34,13 @@
     "@mui/material": "5.0.4",
     "@prisma/client": "^3.3.0",
     "autoprefixer": "10",
+    "await-to-js": "3.0.0",
     "blitz": "^0.41.1",
     "final-form": "^4.20.4",
     "material-ui": "0.20.2",
+    "passport-bnet": "2.0.0",
     "postcss": "8",
+    "query-string": "7.0.1",
     "react": "alpha",
     "react-dom": "alpha",
     "react-final-form": "^6.5.7",
@@ -45,6 +48,7 @@
     "zod": "^3.10.3"
   },
   "devDependencies": {
+    "@types/passport-bnet": "2.0.2",
     "@types/preview-email": "^2.0.1",
     "@types/react": "^17.0.30",
     "eslint": "^7.32.0",

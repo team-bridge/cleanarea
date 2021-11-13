@@ -7,7 +7,7 @@ export default resolver.pipe(
   resolver.authorize(),
   async ({ userId }) => {
     const user = await db.user.findFirst({
-      where: { id: userId },
+      where: { id: userId, deletedAt: null },
       include: {
         blizzardBattlenetAccount: true,
       },

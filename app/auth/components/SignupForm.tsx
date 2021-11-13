@@ -4,6 +4,8 @@ import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
 import { Signup } from "app/auth/validations"
 
+import { Button } from "@mui/material"
+
 type SignupFormProps = {
   onSuccess?: () => void
 }
@@ -13,10 +15,9 @@ export const SignupForm = (props: SignupFormProps) => {
 
   return (
     <div>
-      <h1>Create an Account</h1>
+      <h1>회원가입</h1>
 
       <Form
-        submitText="Create Account"
         schema={Signup}
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values) => {
@@ -35,6 +36,8 @@ export const SignupForm = (props: SignupFormProps) => {
       >
         <LabeledTextField name="email" label="Email" placeholder="Email" />
         <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
+
+        <Button type="submit">회원가입</Button>
       </Form>
     </div>
   )
