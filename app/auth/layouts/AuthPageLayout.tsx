@@ -24,13 +24,21 @@ const AuthPageLayout = ({ children }: AuthPageLayoutProps) => {
       >
         <Box
           sx={{
-            mt: 2,
-            width: 250,
+            mt: 4,
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
           }}
         >
-          <Image src={logo} alt="blitzjs" />
+          <Box
+            sx={{
+              width: 250,
+            }}
+          >
+            <Image src={logo} alt="blitzjs" />
+          </Box>
         </Box>
-        {children}
+        <Box>{children}</Box>
       </Box>
     </Box>
   )
