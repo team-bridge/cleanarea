@@ -4,13 +4,14 @@ import { Signup } from "app/auth/validations"
 import { Role } from "types"
 import { EmailAlreadyExistsError } from "app/lib/error"
 
-export default resolver.pipe(resolver.zod(Signup), async ({ email, password }, ctx) => {
+export default resolver.pipe(resolver.zod(Signup), async ({ email, password, name }, ctx) => {
   const hashedPassword = await SecurePassword.hash(password.trim())
   const loginEmail = email.toLowerCase().trim()
 
   const upsertUserData = {
     email: loginEmail,
     hashedPassword,
+    name: name.toUpperCase(),
     role: "USER",
     deletedAt: null,
   }

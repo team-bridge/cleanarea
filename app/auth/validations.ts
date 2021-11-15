@@ -1,10 +1,15 @@
+import { getErrorMessageByKey } from "app/lib/error"
 import { z } from "zod"
 
 const password = z.string().min(10).max(100)
 
 export const Signup = z.object({
-  email: z.string().email(),
-  name: z.string().min(3),
+  email: z.string().email(getErrorMessageByKey("invalidEmail")),
+  name: z
+    .string()
+    .min(3, getErrorMessageByKey("invalidNameLength"))
+    .max(20, getErrorMessageByKey("invalidNameLength"))
+    .regex(/^[가-힣0-9A-Z]{3,20}$/g, getErrorMessageByKey("invalidNameFormat")),
   password,
 })
 
