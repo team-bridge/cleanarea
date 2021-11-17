@@ -9,6 +9,8 @@ import {
 
 import React from "react"
 import { ServerStyleSheets } from "@material-ui/core/styles"
+import SuperJson from "superjson"
+import { EmailAlreadyExistsError } from "app/lib/error"
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -35,6 +37,8 @@ class MyDocument extends Document {
   // }
 
   render() {
+    SuperJson.registerClass(EmailAlreadyExistsError)
+
     return (
       <Html lang="en">
         <DocumentHead />

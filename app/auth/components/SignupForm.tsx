@@ -1,4 +1,4 @@
-import { Image, Link, useMutation } from "blitz"
+import { Image, useMutation } from "blitz"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
@@ -8,7 +8,7 @@ import { Box, Button, Divider, Grid } from "@mui/material"
 import { blue, grey } from "@mui/material/colors"
 import { FormInnerMarginStyle, FormInnerPaddingStyle, FormInnerStyle, InputStyle } from "./styles"
 import battlenetSvg from "public/battlenet.svg"
-import SuperJson from "superjson"
+
 import { EmailAlreadyExistsError } from "app/lib/error"
 
 type SignupFormProps = {
@@ -16,8 +16,6 @@ type SignupFormProps = {
 }
 
 const PHASE_SIGNIN_HOME = 0
-
-SuperJson.registerClass(EmailAlreadyExistsError)
 
 export const SignupForm = (props: SignupFormProps) => {
   const [phase, setPhase] = useState<number>(PHASE_SIGNIN_HOME)
