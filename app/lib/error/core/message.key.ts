@@ -12,6 +12,8 @@ const errorMessage = {
   invalidPassword: "유효하지 않은 패스워드 입니다.",
   invalidPasswordMinLength: "비밀번호는 10자 이상 입력해주세요.",
   invalidPasswordMaxLength: "비밀번호는 100자 이하로 입력해주세요.",
+  invalidResetPasswordLink:
+    "비밀번호 초기화 링크가 잘못되었거나 링크가 만료되었습니다. 다시 시도해주세요.",
 }
 
 export type ErrorMessageKey = keyof typeof errorMessage

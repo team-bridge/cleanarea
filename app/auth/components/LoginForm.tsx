@@ -1,4 +1,4 @@
-import { AuthenticationError, Link, useMutation, Routes, Image } from "blitz"
+import { AuthenticationError, Link, useMutation, Routes, Image, Router } from "blitz"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import { blue, grey } from "@mui/material/colors"
@@ -119,6 +119,14 @@ export const LoginForm = (props: LoginFormProps) => {
                 로그인
               </Button>
             )}
+            <Button
+              size="large"
+              variant="contained"
+              style={FormInnerStyle}
+              onClick={() => Router.push("/reset-password")}
+            >
+              비빌번호 초기화
+            </Button>
             <Divider>또는</Divider>
             <Button type="button" size="large" variant="contained" style={FormInnerStyle}>
               <Box

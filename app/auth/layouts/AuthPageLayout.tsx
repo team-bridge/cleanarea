@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
+import React, { ReactNode } from "react"
 import Box from "@mui/material/Box"
-import { Image } from "blitz"
+import { Image, Link, Routes } from "blitz"
 import logo from "public/logo.png"
 import bgPattern from "public/bg-pattern.png"
 
@@ -46,17 +46,21 @@ const AuthPageLayout = ({ children }: AuthPageLayoutProps) => {
             justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              width: 280,
-              padding: 4,
-            }}
-            style={{
-              backdropFilter: "blur(2px)",
-            }}
-          >
-            <Image src={logo} alt="blitzjs" />
-          </Box>
+          <Link href={Routes.Home()}>
+            <a>
+              <Box
+                sx={{
+                  width: 280,
+                  padding: 4,
+                }}
+                style={{
+                  backdropFilter: "blur(2px)",
+                }}
+              >
+                <Image src={logo} alt="청정구역" />
+              </Box>
+            </a>
+          </Link>
         </Box>
         <Box>{children}</Box>
       </Box>
