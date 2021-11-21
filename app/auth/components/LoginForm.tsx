@@ -138,7 +138,7 @@ export const LoginForm = (props: LoginFormProps) => {
                 >
                   <Image src={battlenetSvg} alt="battlenet" />
                 </Box>
-                <Link href="#">블리자드로 회원가입</Link>
+                <a href="/api/auth/bnet">블리자드로 로그인</a>
               </Box>
             </Button>
           </Box>

@@ -1,4 +1,4 @@
-import { Image, Link, useMutation } from "blitz"
+import { Image, useMutation } from "blitz"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
 import signup from "app/auth/mutations/signup"
@@ -8,6 +8,8 @@ import { Box, Button, Divider, Grid } from "@mui/material"
 import { blue, grey } from "@mui/material/colors"
 import { FormInnerMarginStyle, FormInnerPaddingStyle, FormInnerStyle, InputStyle } from "./styles"
 import battlenetSvg from "public/battlenet.svg"
+
+import { EmailAlreadyExistsError } from "app/lib/error"
 
 type SignupFormProps = {
   onSuccess?: () => void
@@ -50,9 +52,12 @@ export const SignupForm = (props: SignupFormProps) => {
               await signupMutation(values)
               props.onSuccess?.()
             } catch (error: any) {
-              if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+              if (error instanceof EmailAlreadyExistsError) {
                 // This error comes from Prisma
-                return { email: "This email is already being used" }
+                return { email: error.message }
+              } else if (error.code === "P2002" && error.meta?.target?.includes("name")) {
+                // This error comes from Prisma
+                return { name: "이미 사용중인 닉네임이에요." }
               } else {
                 return { [FORM_ERROR]: error.toString() }
               }
@@ -111,7 +116,7 @@ export const SignupForm = (props: SignupFormProps) => {
             >
               <Image src={battlenetSvg} alt="battlenet" />
             </Box>
-            <Link href="#">블리자드로 회원가입</Link>
+            <a href={"/api/auth/bnet"}>블리자드로 회원가입</a>
           </Box>
         </Button>
       </Box>

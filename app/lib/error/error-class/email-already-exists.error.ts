@@ -5,9 +5,11 @@ import SuperJson from "superjson"
 export class EmailAlreadyExistsError extends Error implements IBaseError {
   statusCode = 400
   name = "EmailAlreadyExists"
+  message: string
 
   constructor() {
-    super(getErrorMessageByKey("emailAlreadyExists"))
+    super()
+    this.message = getErrorMessageByKey("emailAlreadyExists")
   }
 }
 

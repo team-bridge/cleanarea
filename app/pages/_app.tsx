@@ -34,12 +34,7 @@ function RootErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
   if (error instanceof AuthenticationError) {
     return <LoginForm onSuccess={resetErrorBoundary} />
   } else if (error instanceof AuthorizationError) {
-    return (
-      <ErrorComponent
-        statusCode={error.statusCode}
-        title="Sorry, you are not authorized to access this"
-      />
-    )
+    return <ErrorComponent statusCode={error.statusCode} title="권한이 없습니다." />
   } else {
     return (
       <ErrorComponent statusCode={error.statusCode || 400} title={error.message || error.name} />
