@@ -1,3 +1,4 @@
+import { getErrorMessageByKey } from "app/lib/error"
 import { resolver, SecurePassword, hash256 } from "blitz"
 import db from "db"
 import { ResetPassword } from "../validations"
@@ -5,7 +6,11 @@ import login from "./login"
 
 export class ResetPasswordError extends Error {
   name = "ResetPasswordError"
-  message = "Reset password link is invalid or it has expired."
+  message: string
+  constructor() {
+    super()
+    this.message = getErrorMessageByKey("invalidResetPasswordLink")
+  }
 }
 
 export default resolver.pipe(resolver.zod(ResetPassword), async ({ password, token }, ctx) => {
