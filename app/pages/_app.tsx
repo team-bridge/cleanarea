@@ -19,6 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
   const onReset = useQueryErrorResetBoundary()
 
+  const objects = { ...Component, ...pageProps }
+  const keys = Object.keys(objects)
+
   if (router.pathname.indexOf("/admin") !== -1) {
     return <></> // admin page
   } else {

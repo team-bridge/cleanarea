@@ -21,10 +21,10 @@ export const EditArticle = () => {
 
   return (
     <>
+      123
       <Head>
         <title>Edit Article {article.id}</title>
       </Head>
-
       <div>
         <h1>Edit Article {article.id}</h1>
         <pre>{JSON.stringify(article, null, 2)}</pre>

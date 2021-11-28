@@ -10,12 +10,13 @@ export const Article = () => {
   const [deleteArticleMutation] = useMutation(deleteArticle)
   const [article] = useQuery(getArticle, { id: articleId })
 
+  console.log(123)
+
   return (
     <>
       <Head>
         <title>Article {article.id}</title>
       </Head>
-
       <div>
         <h1>Article {article.id}</h1>
         <pre>{JSON.stringify(article, null, 2)}</pre>

@@ -65,7 +65,7 @@ export const LoginForm = (props: LoginFormProps) => {
           >
             {phase === PHASE_REQUIRE_EMAIL ? (
               <a>
-                청정구역에 로그인 또는&nbsp;
+                !!12321청정구역에 로그인 또는&nbsp;
                 <Link href={Routes.SignupPage()}>
                   <MuiLink>회원가입</MuiLink>
                 </Link>
