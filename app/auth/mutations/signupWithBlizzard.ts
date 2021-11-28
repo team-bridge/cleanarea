@@ -1,4 +1,4 @@
-import { resolver } from "@blitzjs/core/server"
+import { resolver } from "blitz"
 import { EmailAlreadyExistsError } from "app/lib/error"
 import { BlizzardAccountNotExists } from "app/lib/error/error-class/blizzard-account-not-exists.error"
 import db from "db"

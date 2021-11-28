@@ -1,4 +1,4 @@
-import { resolver } from "@blitzjs/core/server"
+import { resolver } from "blitz"
 import { SetBattleTagValidation } from "../validations"
 
 export default resolver.pipe(
