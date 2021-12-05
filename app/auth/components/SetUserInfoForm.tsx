@@ -38,6 +38,7 @@ export const SetUserInfoForm: React.FC<SetUserInfoFormFormProps> = (props) => {
             justifyContent: "center",
           }}
         >
+          <div>필수 정보를 입력해서 회원가입을 완료해주세요.</div> <br />
           <Form
             name="필수정보 입력"
             schema={SetUserInfo}
