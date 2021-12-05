@@ -7,7 +7,7 @@ const errorMessage = {
   invalidName: "유효하지 않은 닉네임입니다.",
   invalidNameLength: "닉네임은 3글자에서 20글자 사이로 입력 가능합니다.",
   invalidNameFormat: "닉네임은 한글,영어,숫자로만 구성될 수 있습니다.",
-  blizzardAccountNotExists: "블리자드 계정을 찾을 수 없어요. 블리자드 인증을 다시 해주세요.",
+  blizzardAccountNotExists: "배틀넷 계정을 찾을 수 없어요. 배틀넷 인증을 다시 해주세요.",
   requiredPassword: "비밀번호를 입력해주세요.",
   invalidPassword: "유효하지 않은 패스워드 입니다.",
   invalidPasswordMinLength: "비밀번호는 10자 이상 입력해주세요.",
