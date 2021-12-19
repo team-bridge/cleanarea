@@ -1,4 +1,4 @@
 module.exports = {
   presets: ["blitz/babel"],
-  plugins: [],
+  plugins: [["import", { libraryName: "antd", style: true }]],
 }
